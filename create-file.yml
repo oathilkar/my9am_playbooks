@@ -1,0 +1,13 @@
+--- # create new file
+
+  - name: create new file
+    hosts: all
+    become: yes
+    connection: ssh
+
+
+    tasks:
+    - name: create new file
+      file: 
+        path: /home/ansible/demo-createnewfile
+        state: touch

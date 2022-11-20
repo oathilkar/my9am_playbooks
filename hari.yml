@@ -1,0 +1,18 @@
+--- # my sample playbook
+
+- name: create file directory copy
+  hosts: all
+  user: ansible
+  become: yes
+  connection: ssh
+
+  tasks:
+    - name: create a file
+      file: path=/tmp/hari.txt state=file
+
+    - name: create a file
+      file: path=/tmp/sai state=directory
+
+    - name: copy a file
+      copy: src=./robertfile dest=/home/ansible
+

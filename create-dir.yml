@@ -1,0 +1,15 @@
+--- # create new directory
+
+  - name: create a new directory
+    hosts: all
+    user: ansible
+    become: yes
+    connection: ssh
+
+
+
+    tasks:
+      - name: create a new directory
+        file:
+          path: /home/ansible/demo-createdirectory
+          state: directory

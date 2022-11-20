@@ -1,0 +1,12 @@
+---
+
+  - hosts: all
+    become: true
+
+    var_files:
+       - user.yml
+
+    tasks: 
+       - name: creat user
+         user:
+           name: '{{user1}}'

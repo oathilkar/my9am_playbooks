@@ -1,0 +1,41 @@
+--- # my conditional playbook
+
+- name: my conditional playbook
+  hosts: all
+  become: yes
+
+
+  tasks:
+    - name: install httpd pkg
+      yum:
+        name: httpd
+        state: latest
+      when: ansible_os_family == "RedHat"
+
+
+    - name: run httpd service
+      service:
+        name: httpd
+        state: started
+      when: ansible_os_family == "RedHat"
+
+
+    - name: install apache2 pkg
+      apt:
+        name: apache2
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: start apache2 service
+      apt:
+        name: apache2
+        state: present
+      when: ansible_os_family == "Debian" 
+
+    - name: copy index.html
+      copy:
+        src: /home/ansible/index.html
+        dest: /var/www/html
+        owner: om
+        mode: 0666
+

@@ -1,0 +1,19 @@
+--- # install multiple packages of s/w
+
+- name: install multiple s/w
+  hosts: webservers
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:  
+    - name: install multiple s/w
+      yum: name='{{item}}' state=installed
+      with_items:
+            - httpd
+            - mysql
+            - tree
+            - git
+            - docker
+            - java
+            - which
+            - wget

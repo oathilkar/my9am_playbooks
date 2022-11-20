@@ -1,0 +1,15 @@
+--- # delete a directory
+
+  - name: delete a directory
+    hosts: all
+    user: ansible
+    become: yes
+    connection: ssh
+
+
+
+    tasks: 
+      - name: delete a directory
+        file: 
+          path: /home/ansible/om-dir
+          state: absent
